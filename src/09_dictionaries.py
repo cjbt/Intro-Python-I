@@ -57,3 +57,8 @@ for x in range(len(waypoints)):
     print(waypoints[x]["lat"])
     print(waypoints[x]["lon"])
     print(waypoints[x]["name"])
+
+for waypoint in waypoints:
+    print(waypoint["lat"])
+    print(waypoint["lon"])
+    print(waypoint["name"])

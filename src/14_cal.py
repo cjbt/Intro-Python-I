@@ -21,7 +21,7 @@ and does the following:
 
 import sys
 import calendar
-from datetime import datetime
+import datetime
 
 x = input("14_cal.py month [year]").split(',')
 calendar.setfirstweekday(0)
@@ -29,20 +29,24 @@ cal = calendar.Calendar()
 
 
 def makeCal(*args):
+    year = int(str(datetime.datetime.today())[:4])
+    month = int(str(datetime.datetime.today())[5:7])
     if len(args) > 1:
-        for x in cal.itermonthdays(int(args[1]), int(args[0])):
-            print(x)
+        print(calendar.TextCalendar(firstweekday=0).formatmonth(
+            int(args[1]), int(args[0])))
     elif len(args) == 1 and args[0] != '':
-        for x in cal.itermonthdays(2019, int(args[0])):
-            print(x)
+        print(calendar.TextCalendar(firstweekday=0).formatmonth(
+            year, int(args[0])))
     elif args[0] == '':
-        print(str(datetime.today())[5:7])
+        print(calendar.TextCalendar(firstweekday=0).formatmonth(
+            year, month))
     print('must take in a month and a date separated by commas: month,year')
     sys.exit()
 
 
 # class calendar.Calendar(6)
 
-
 # print(cal(*x))
+
+
 print(makeCal(*x))
