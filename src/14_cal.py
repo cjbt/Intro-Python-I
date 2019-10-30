@@ -23,7 +23,6 @@ import sys
 import calendar
 import datetime
 
-x = input("14_cal.py month [year]").split(',')
 calendar.setfirstweekday(0)
 cal = calendar.Calendar()
 
@@ -36,7 +35,7 @@ def makeCal(*args):
             int(args[1]), int(args[0])))
     elif len(args) == 1 and args[0] != '':
         print(calendar.TextCalendar(firstweekday=0).formatmonth(
-            year, int(args[0])))
+            year, args[0]))
     elif args[0] == '':
         print(calendar.TextCalendar(firstweekday=0).formatmonth(
             year, month))
@@ -44,9 +43,4 @@ def makeCal(*args):
     sys.exit()
 
 
-# class calendar.Calendar(6)
-
-# print(cal(*x))
-
-
-print(makeCal(*x))
+print(makeCal(*sys.argv[1:]))
