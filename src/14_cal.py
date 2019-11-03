@@ -21,4 +21,26 @@ and does the following:
 
 import sys
 import calendar
-from datetime import datetime
+import datetime
+
+calendar.setfirstweekday(0)
+cal = calendar.Calendar()
+
+
+def makeCal(*args):
+    year = int(str(datetime.datetime.today())[:4])
+    month = int(str(datetime.datetime.today())[5:7])
+    if len(args) > 1:
+        print(calendar.TextCalendar(firstweekday=0).formatmonth(
+            int(args[1]), int(args[0])))
+    elif len(args) == 1 and args[0] != '':
+        print(calendar.TextCalendar(firstweekday=0).formatmonth(
+            year, args[0]))
+    elif args[0] == '':
+        print(calendar.TextCalendar(firstweekday=0).formatmonth(
+            year, month))
+    print('must take in a month and a date separated by commas: month,year')
+    sys.exit()
+
+
+print(makeCal(*sys.argv[1:]))
